@@ -135,6 +135,9 @@ sudo pamac install qalculate-qt
 ## Remove kcalc if already installed
 ## sudo pacman -Rns kcalc
 
+# Install Razer drivers
+paru openrazer-meta
+
 # Install Doom emacs
 
  ## Install dependencies
