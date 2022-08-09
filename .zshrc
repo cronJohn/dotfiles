@@ -1,5 +1,4 @@
 # Plugins
-plugins=( sudo )
 
 # Stuff for pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
