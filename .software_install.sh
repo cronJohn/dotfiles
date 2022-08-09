@@ -3,17 +3,19 @@
 # Exit if any error happens
 set -e
 
-# Install git
-echo 'Installing git...'
-sudo pacman -S git
+# Install needed dependencies
+sudo pacman -S --needed base-devel
 
 # Install flatpak
 echo 'Installing flatpak...'
 sudo pacman -S flatpak
 
-# Fix emojis
+# Get colored emojis
 sudo pacman -S noto-fonts-emoji
 fc-cache -f -v
+
+# Apply those emojis globally with this package
+sudo pamac install noto-color-emoji-fontconfig
 
 # Install Rust-lang
 echo 'Installing rust-lang...'
@@ -23,7 +25,6 @@ rustup install stable
 # Install paru
 echo 'Installing paru...'
 cd $HOME
-sudo pacman -S --needed base-devel # install necessary packages
 sudo pamac install paru-bin
 
 # Install drivers to make Davinci Resolve work
@@ -41,6 +42,17 @@ sudo nano com.blackmagicdesign.resolve.desktop
 # Install Node (or pnpm)
 echo 'Installing pnpm...'
 sudo pamac install pnpm-bin
+# By default this doesn't work with zsh
+# You need to add...
+  # export PNPM_HOME="$HOME/.local/share/pnpm"
+  # export PATH="$PNPM_HOME:$PATH"
+# To your .zshrc
+
+# ! Will probably mention this in the pnpm git repo or
+# ! create a script that does this automatically
+
+
+# I usually just do pnpm env use --global latest but you can uncomment this and choose
 
 # Install the version of node the user wants
 # while true; do
@@ -85,7 +97,6 @@ echo 'Installing steam...'
 sudo pacman -S steam
 echo 'All set installing Steam! Make sure to enable Steam Proton!'
 
-
 # Install Anki
 echo 'Installing Anki...'
 sudo pamac install anki-bin
@@ -94,30 +105,17 @@ sudo pamac install anki-bin
 echo 'Installing Discord...'
 sudo pamac install discord
 
-
 echo 'Installing JetBrains font...'
-URL='https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip'
-FILENAME='JetBrainsMono-2.242.zip'
-
-python -m webbrowser $URL # Opens URL in browser tab to be downloaded
-
-echo 'Waiting for Font to be downloaded...'
-while ! test -f "/$HOME/$USER/Downloads/$FILENAME"; do
-  sleep 3
-  echo "Still waiting..."
-done
-
-echo 'Unzipping font to /usr/share/fonts'
-sudo unzip $FILENAME -d /usr/share/fonts
-echo 'The font should be installed!'
-
+sudo pamac install nerd-fonts-jetbrains-mono
 
 # Install OBS-Studio
-export QT_QPA_PLATFORM=wayland # Need this setting for pipewire
+
+# export QT_QPA_PLATFORM=wayland # Need this setting for pipewire if you use wayland
 
 echo 'Installing OBS Studio...'
 flatpak install flathub com.obsproject.Studio
 
+echo 'It is recommended to restart now after installation'
 echo 'Check to see if it is working...'
 flatpak run com.obsproject.Studio
 
@@ -136,15 +134,18 @@ sudo pamac install qalculate-qt
 ## sudo pacman -Rns kcalc
 
 # Install Razer drivers
+## Need kernel headers before installing
+sudo pamac install linux515-headers # Change 515 to whatever kernel version you are using
+
+## Then install the main openrazer package
 paru openrazer-meta
 
-# Install Doom emacs
+# Install neovim
+sudo pamac install neovim
 
- ## Install dependencies
- pacman -S ripgrep
- pacman -S fd
-
-sudo pamac install emacs-nativecomp
+## Install dependencies if you use something like lunarvim
+pacman -S ripgrep
+pacman -S fd
 
 # Enable fs trim
 echo 'Enabling SSD trim...'
