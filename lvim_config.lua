@@ -1,0 +1,1 @@
+/home/kirbo/.config/lvim/config.lua
