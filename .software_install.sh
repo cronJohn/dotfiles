@@ -31,13 +31,8 @@ sudo pamac install paru-bin
 echo 'Installing drivers for Davinci Resolve...'
 paru -S amdgpu-pro-libgl opencl-amd
 
-# Install davinci resolve
-paru davinci-resolve
-echo 'Check to see if it works...'
-progl /opt/resolve/bin/resolve
-cd /usr/share/applications
-echo 'Add progl after the "Exec="'
-sudo nano com.blackmagicdesign.resolve.desktop
+# Install kden live
+sudo pacman kdenlive
 
 # Install Node (or pnpm)
 echo 'Installing pnpm...'
