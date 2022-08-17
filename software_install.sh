@@ -15,28 +15,24 @@ sudo pacman -S noto-fonts-emoji
 fc-cache -f -v
 
 # Apply those emojis globally with this package
-sudo pamac install noto-color-emoji-fontconfig
+yay noto-color-emoji-fontconfig
 
 # Install Rust-lang
 echo 'Installing rust-lang...'
-sudo pamac install rustup
+sudo pacman -S rustup
 rustup install stable
 
 # Install paru
 echo 'Installing paru...'
 cd $HOME
-sudo pamac install paru-bin
-
-# Install drivers to make Davinci Resolve work
-echo 'Installing drivers for Davinci Resolve...'
-paru -S amdgpu-pro-libgl opencl-amd
+yay paru-bin
 
 # Install kden live
 sudo pacman kdenlive
 
 # Install Node (or pnpm)
 echo 'Installing pnpm...'
-sudo pamac install pnpm-bin
+yay pnpm-bin
 # By default this doesn't work with zsh
 # You need to add...
   # export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -73,17 +69,17 @@ sudo pamac install pnpm-bin
 
 # Start installing Steam
 echo 'Uncomment the [multilib] (can uncomment the Color in Misc options)'
-sudo nano /etc/pacman.conf
+sudo nvim /etc/pacman.conf
 sudo pacman -Syy # Refresh package db
 echo 'Install mesa drivers for AMD'
 sudo pacman -S lib32-mesa # Install drivers for AMD
 
 echo 'Uncomment the en_US.UTF-8 UTF-8'
-sudo nano /etc/locale.gen
+sudo nvim /etc/locale.gen
 sudo locale-gen
 
 echo 'Installing Microsoft fonts...'
-sudo pamac install ttf-ms-fonts
+yay ttf-ms-fonts
 
 echo 'Installing wqy-zenhei to add support for Asian languages...'
 sudo pacman -S wqy-zenhei
@@ -94,14 +90,14 @@ echo 'All set installing Steam! Make sure to enable Steam Proton!'
 
 # Install Anki
 echo 'Installing Anki...'
-sudo pamac install anki-bin
+yay anki-bin
 
 # Install Discord
 echo 'Installing Discord...'
-sudo pamac install discord
+sudo pacman -S discord
 
 echo 'Installing JetBrains font...'
-sudo pamac install nerd-fonts-jetbrains-mono
+yay nerd-fonts-jetbrains-mono
 
 # Install OBS-Studio
 
@@ -117,26 +113,16 @@ flatpak run com.obsproject.Studio
 
 # Install Obsidian
 echo 'Installing Obsidian...'
-sudo pamac install obsidian
+sudo pacman -S obsidian
 
 # Install Inkscape
-sudo pamac install inkscape
+sudo pacman -S inkscape
 
 # Install Qalculate!
-sudo pamac install qalculate-qt
-
-## Remove kcalc if already installed
-## sudo pacman -Rns kcalc
-
-# Install Razer drivers
-## Need kernel headers before installing
-sudo pamac install linux515-headers # Change 515 to whatever kernel version you are using
-
-## Then install the main openrazer package
-paru openrazer-meta
+sudo pacman -S qalculate-qt
 
 # Install neovim
-sudo pamac install neovim
+sudo pacman -S neovim
 
 ## Install dependencies if you use something like lunarvim
 pacman -S ripgrep
