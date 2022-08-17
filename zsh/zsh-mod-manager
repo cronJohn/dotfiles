@@ -1,0 +1,39 @@
+PLUGS_FOLDER="$ZDOTDIR/plugins/"
+
+function zsh_add_file {
+	local plugin_name=$1
+	local plugin_init_name=$2
+	local plugin_init_path="$PLUGS_FOLDER/$plugin_name/$plugin_init_name"
+
+        [ -f $plugin_init_path ] && source $plugin_init_path # If the init file exists, source it
+	push_to_plugins $plugin_name
+}
+ 
+function zsh_add_plugin {
+	local plugin_git_slug=$1
+        local plugin_name=$(echo $plugin_git_slug | cut -d "/" -f 2)
+        local plugin_init_name=$2
+
+        if [ -d "$PLUGS_FOLDER/$plugin_name" ]; then
+                zsh_add_file $plugin_name $plugin_init_name
+        else
+		echo "Adding plugin: ${plugin_name}"
+                git clone --quiet "https://github.com/$plugin_git_slug.git" "$PLUGS_FOLDER/$plugin_name"
+		push_to_plugins $plugin_name
+		RESPONSE="Restart your shell with 'exec zsh' for plugins to take effect"
+        fi
+}
+
+function zsh_remove_unnecessary_plugins {
+	# Need to compare directories
+	for plugin in $PLUGS_FOLDER/*; do
+		if [[ ! "${PLUGINS[*]}" =~ "${plugin}" ]]; then
+			rm -r $plugin
+		fi
+	done
+}
+
+function push_to_plugins {
+	# $1 should be the plugin name
+	PLUGINS+=( $PLUGS_FOLDER/$1 )
+}
