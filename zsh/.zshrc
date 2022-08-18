@@ -76,6 +76,7 @@ source "$ZDOTDIR/zsh-mod-manager"
 export PLUGINS=() # Export PLUGINS to make sure zsh-mod-manager can access it
 export RESPONSE # Used to tell user to restart shell
 
+zsh_set_theme "romkatv/powerlevel10k" "powerlevel10k.zsh-theme" 1
 zsh_add_plugin "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 zsh_add_plugin "none9632/zsh-sudo" "zsh-sudo.zsh"
