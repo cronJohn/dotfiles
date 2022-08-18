@@ -8,7 +8,7 @@ export KEYTIMEOUT=1 # Make inputting more responsive
 
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.zsh_history
 
 ## Tab completion
 autoload -U compinit
