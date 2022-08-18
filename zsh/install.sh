@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Make sure this file is executable
+
 # Source .zshenv to set XDG_CONFIG_HOME environment variables
 source .zshenv
 
