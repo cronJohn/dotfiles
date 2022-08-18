@@ -68,7 +68,6 @@ alias v='nvim'
 PROMPT=' ' # This will be the default if something doesn't load right
 
 # Themes
-source $XDG_CONFIG_HOME/zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # Plugins
 source "$ZDOTDIR/zsh-mod-manager"
@@ -87,4 +86,5 @@ fi
 
 # TODO There is an issue when you 'exec zsh' it still prints the message
 
-zsh_remove_unnecessary_plugins
+
+# zsh_remove_unnecessary_plugins
