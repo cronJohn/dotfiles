@@ -82,9 +82,7 @@ zsh_add_plugin "none9632/zsh-sudo" "zsh-sudo.zsh"
 
 if [ ! -z $RESPONSE ]; then # Fixes issue with blank line being added if no plugins are added
 	echo $RESPONSE
+	RESPONSE=""
 fi
-
-# TODO There is an issue when you 'exec zsh' it still prints the message
-
 
 # zsh_remove_unnecessary_plugins
