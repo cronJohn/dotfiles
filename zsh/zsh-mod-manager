@@ -5,17 +5,29 @@ function zsh_add_file {
 	local module_init_path=$1
         [ -f $module_init_path ] && source $module_init_path # If the init file exists, source it
 }
- 
+
+function install_module {
+	local git_slug=$1
+	local target_location=$2
+	local depth=$3
+	if [ -z $depth ]; then # If the user doesn't specify a depth
+		git clone "https://github.com/${git_slug}.git" $target_location
+	else
+		git clone --depth=$depth "https://github.com/${git_slug}.git" $target_location
+	fi
+}
+
 function zsh_add_plugin {
 	local plugin_git_slug=$1
         local plugin_name=$(echo $plugin_git_slug | cut -d "/" -f 2) # Second part of slug
         local plugin_init_name=$2 # The thing you need to source
+	local depth=$3
 
         if [ -d "$PLUGS_FOLDER/$plugin_name" ]; then
                 zsh_add_file $PLUGS_FOLDER/$plugin_name/$plugin_init_name
         else
 		echo "Adding plugin: ${plugin_name}"
-		install_module $plugin_git_slug $PLUGS_FOLDER/$plugin_name
+		install_module $plugin_git_slug $PLUGS_FOLDER/$plugin_name $depth
 		PLUGINS+=( $PLUGS_FOLDER/$plugin_name )
 		RESPONSE="Restart your shell with 'exec zsh' for plugins to take effect"
         fi
@@ -25,24 +37,15 @@ function zsh_set_theme {
 	local theme_git_slug=$1
         local theme_name=$(echo $theme_git_slug | cut -d "/" -f 2)
         local theme_init_name=$2
+	local depth=$3
 
         if [ -d "$THEMES_FOLDER/$theme_name" ]; then
                 zsh_add_file $THEMES_FOLDER/$theme_name/$theme_init_name
         else
 		echo "Adding theme: ${theme_name}"
-		install_module $theme_git_slug $THEMES_FOLDER/$themes_name
+		install_module $theme_git_slug $THEMES_FOLDER/$theme_name $depth
 		RESPONSE="Restart your shell with 'exec zsh' for themes to take effect"
         fi
-
-function install_module {
-	local git_slug=$1
-	local target_location=$2
-	local depth=$3
-	if [ -z $depth ]; then # If the user doesn't specify a depth
-		git clone --quiet "https://github.com/${git_slug}.git" $target_location 
-	else
-		git clone --quiet --depth=$depth "https://github.com/${git_slug}.git" $target_location
-	fi
 }
 
 function zsh_remove_unnecessary_plugins {
