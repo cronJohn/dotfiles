@@ -61,10 +61,10 @@ function zsh_remove_unnecessary_plugins {
 }
 
 function zsh_remove_unnecessary_themes {
-	local theme_to_keep=$1
+	local theme_to_keep=$THEMES_FOLDER/$1
 
 	for theme in $THEMES_FOLDER/*; do
-		if [ $theme -ne $theme_to_keep ]; then
+		if [ $theme != $theme_to_keep ]; then
 			echo "Found unused themes..."
 			echo "Removing them now..."
 			sudo rm -r $theme
