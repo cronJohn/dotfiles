@@ -85,4 +85,4 @@ if [ ! -z $RESPONSE ]; then # Fixes issue with blank line being added if no plug
 	RESPONSE=""
 fi
 
-# zsh_remove_unnecessary_plugins
+zsh_remove_unnecessary_plugins
