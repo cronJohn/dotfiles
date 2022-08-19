@@ -25,6 +25,7 @@ function zsh_add_plugin {
 
         if [ -d "$PLUGS_FOLDER/$plugin_name" ]; then
                 zsh_add_file $PLUGS_FOLDER/$plugin_name/$plugin_init_name
+		PLUGINS+=( $PLUGS_FOLDER/$plugin_name )
         else
 		echo "Adding plugin: ${plugin_name}"
 		install_module $plugin_git_slug $PLUGS_FOLDER/$plugin_name $depth
@@ -52,7 +53,9 @@ function zsh_remove_unnecessary_plugins {
 	# Need to compare directories
 	for plugin in $PLUGS_FOLDER/*; do
 		if [[ ! "${PLUGINS[*]}" =~ "${plugin}" ]]; then # If the plugin in folder is not in PLUGINS
-			rm -r $plugin
+			echo "Found unused plugins..."
+			echo "Removing them now..."
+			sudo rm -r $plugin
 		fi
 	done
 }
@@ -62,7 +65,9 @@ function zsh_remove_unnecessary_themes {
 
 	for theme in $THEMES_FOLDER/*; do
 		if [ $theme -ne $theme_to_keep ]; then
-			rm -r $theme
+			echo "Found unused themes..."
+			echo "Removing them now..."
+			sudo rm -r $theme
 		fi
 	done
 }
