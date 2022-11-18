@@ -10,25 +10,10 @@ sudo pacman -S --needed base-devel
 echo 'Installing flatpak...'
 sudo pacman -S flatpak
 
-# Get colored emojis
-sudo pacman -S noto-fonts-emoji
-fc-cache -f -v
-
-# Apply those emojis globally with this package
-yay noto-color-emoji-fontconfig
-
 # Install Rust-lang
 echo 'Installing rust-lang...'
 sudo pacman -S rustup
 rustup install stable
-
-# Install paru
-echo 'Installing paru...'
-cd $HOME
-yay paru-bin
-
-# Install kden live
-sudo pacman kdenlive
 
 # Install Node (or pnpm)
 echo 'Installing pnpm...'
@@ -68,22 +53,6 @@ yay pnpm-bin
 
 
 # Start installing Steam
-echo 'Uncomment the [multilib] (can uncomment the Color in Misc options)'
-sudo nvim /etc/pacman.conf
-sudo pacman -Syy # Refresh package db
-echo 'Install mesa drivers for AMD'
-sudo pacman -S lib32-mesa # Install drivers for AMD
-
-echo 'Uncomment the en_US.UTF-8 UTF-8'
-sudo nvim /etc/locale.gen
-sudo locale-gen
-
-echo 'Installing Microsoft fonts...'
-yay ttf-ms-fonts
-
-echo 'Installing wqy-zenhei to add support for Asian languages...'
-sudo pacman -S wqy-zenhei
-
 echo 'Installing steam...'
 sudo pacman -S steam
 echo 'All set installing Steam! Make sure to enable Steam Proton!'
@@ -96,9 +65,6 @@ yay anki-bin
 echo 'Installing Discord...'
 sudo pacman -S discord
 
-echo 'Installing JetBrains font...'
-yay nerd-fonts-jetbrains-mono
-
 # Install OBS-Studio
 
 # export QT_QPA_PLATFORM=wayland # Need this setting for pipewire if you use wayland
@@ -109,11 +75,6 @@ flatpak install flathub com.obsproject.Studio
 echo 'It is recommended to restart now after installation'
 echo 'Check to see if it is working...'
 flatpak run com.obsproject.Studio
-
-
-# Install Obsidian
-echo 'Installing Obsidian...'
-sudo pacman -S obsidian
 
 # Install Inkscape
 sudo pacman -S inkscape
