@@ -3,22 +3,36 @@
 # Exit if any error happens
 set -e
 
-# Install needed dependencies
-sudo pacman -S --needed base-devel
+standard_programs=( neovim python3-neovim kate steam discord inkscape qalculate-qt
+                    ripgrep fd)
 
-# Install flatpak
-echo 'Installing flatpak...'
-sudo pacman -S flatpak
+flatpak_programs=( net.ankiweb.Anki com.obsproject.Studio )
 
-# Install Rust-lang
-echo 'Installing rust-lang...'
-sudo pacman -S rustup
-rustup install stable
+if ! command -v flatpak &> /dev/null
+then
+    echo "Flatpak not found! Installing"
+    standard_programs+=(flatpak)
+fi
 
-# Install Node (or pnpm)
-echo 'Installing pnpm...'
-yay pnpm-bin
-# By default this doesn't work with zsh
+# Install all standard programs
+for i in "${standard_programs[@]}"
+do
+    # How it's installed is different depending on Arch (pacman) or Fedora (dnf)
+done
+
+# Install all flatpaks
+for i in "${flatpak_programs[@]}"
+do
+    flatpak install flathub $i
+done
+
+# A universal way of installing rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# A universal way of installing pnpm
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+
+# By default this doesn't work with zsh the way I have it configured
 # You need to add...
   # export PNPM_HOME="$HOME/.local/share/pnpm"
   # export PATH="$PNPM_HOME:$PATH"
@@ -51,43 +65,8 @@ yay pnpm-bin
 # 	esac
 # done
 
-
-# Start installing Steam
-echo 'Installing steam...'
-sudo pacman -S steam
-echo 'All set installing Steam! Make sure to enable Steam Proton!'
-
-# Install Anki
-echo 'Installing Anki...'
-yay anki-bin
-
-# Install Discord
-echo 'Installing Discord...'
-sudo pacman -S discord
-
-# Install OBS-Studio
-
+# Not sure if you still need this for OBS
 # export QT_QPA_PLATFORM=wayland # Need this setting for pipewire if you use wayland
-
-echo 'Installing OBS Studio...'
-flatpak install flathub com.obsproject.Studio
-
-echo 'It is recommended to restart now after installation'
-echo 'Check to see if it is working...'
-flatpak run com.obsproject.Studio
-
-# Install Inkscape
-sudo pacman -S inkscape
-
-# Install Qalculate!
-sudo pacman -S qalculate-qt
-
-# Install neovim
-sudo pacman -S neovim
-
-## Install dependencies if you use something like lunarvim
-pacman -S ripgrep
-pacman -S fd
 
 # Enable fs trim
 echo 'Enabling SSD trim...'
