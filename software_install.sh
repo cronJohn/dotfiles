@@ -4,20 +4,56 @@
 set -e
 
 standard_programs=( neovim python3-neovim kate steam discord inkscape qalculate-qt
-                    ripgrep fd)
+                    ripgrep fd fzf)
 
 flatpak_programs=( net.ankiweb.Anki com.obsproject.Studio )
 
-if ! command -v flatpak &> /dev/null
-then
-    echo "Flatpak not found! Installing"
-    standard_programs+=(flatpak)
-fi
+linux_distros=( ubuntu arch fedora )
+
+
+get_linux_distro() {
+    location="/etc/os-release"
+    for distro in "${linux_distros[@]}"
+    do
+        if grep -q $distro $location # finds something
+        then
+            echo "$distro"
+        fi
+    done
+}
+
+user_distro=$(get_linux_distro)
+
+
+add_not_installed_programs_to_installation_list() {
+    if ! command -v $1 &> /dev/null
+    then
+        standard_programs+=($1)
+    fi
+}
+
+
+get_installation_method() {
+    command="sudo "
+    if [ $user_distro = "fedora" ];
+    then
+        command+="dnf install"
+    elif [ $user_distro = "arch" ];
+    then
+        command+="pacman -S"
+    elif [ $user_distro = "ubuntu" ];
+    then
+        command+="apt install"
+    else
+        echo "User distro unknown"
+    fi
+    echo $command
+}
 
 # Install all standard programs
 for i in "${standard_programs[@]}"
 do
-    # How it's installed is different depending on Arch (pacman) or Fedora (dnf)
+    # How it's installed is different depending on the distro | Arch (pacman) or Fedora (dnf)
 done
 
 # Install all flatpaks
@@ -25,6 +61,15 @@ for i in "${flatpak_programs[@]}"
 do
     flatpak install flathub $i
 done
+
+install_font() {
+    git clone https://github.com/ronniedroid/getnf.git
+    cd getnf
+    ./install.sh
+    getnf
+    cd ..
+    rm -r getnf
+}
 
 # A universal way of installing rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -64,9 +109,6 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 # 		;;
 # 	esac
 # done
-
-# Not sure if you still need this for OBS
-# export QT_QPA_PLATFORM=wayland # Need this setting for pipewire if you use wayland
 
 # Enable fs trim
 echo 'Enabling SSD trim...'
