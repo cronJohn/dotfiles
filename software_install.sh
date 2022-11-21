@@ -25,14 +25,6 @@ get_linux_distro() {
 user_distro=$(get_linux_distro)
 
 
-add_not_installed_programs_to_installation_list() {
-    if ! command -v $1 &> /dev/null
-    then
-        standard_programs+=($1)
-    fi
-}
-
-
 get_installation_method() {
     command="sudo "
     if [ $user_distro = "fedora" ];
