@@ -82,19 +82,11 @@ echo 'source "$HOME/.cargo/env"' >> zshrc_location
 
 
 # A universal way of installing pnpm
-# curl -fsSL https://get.pnpm.io/install.sh | sh -
-## By default this doesn't work with zsh the way I have it configured
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+echo 'export PNPM_HOME="~/.local/share/pnpm"' >> zshrc_location
+echo 'export PATH="$PNPM_HOME:$PATH"' >> zshrc_location
 
-# You need to add...
-  # export PNPM_HOME="$HOME/.local/share/pnpm"
-  # export PATH="$PNPM_HOME:$PATH"
-# To your .zshrc
-
-# TODO Will probably mention this in the pnpm git repo or
-# create a script that does this automatically
-
-# eval "pnpm env use --global $node_version"
-
+pnpm env use --global $node_version
 
 # Enable fs trim
 echo 'Enabling SSD trim...'
