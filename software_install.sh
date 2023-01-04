@@ -12,6 +12,8 @@ linux_distros=( ubuntu arch fedora )
 
 node_version=latest # lts or latest
 
+zshrc_location="~/.config/zshrc/"
+
 
 get_linux_distro() {
     location="/etc/os-release"
@@ -76,6 +78,8 @@ install_font
 
 # A universal way of installing rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo 'source "$HOME/.cargo/env"' >> zshrc_location
+
 
 # A universal way of installing pnpm
 # curl -fsSL https://get.pnpm.io/install.sh | sh -
