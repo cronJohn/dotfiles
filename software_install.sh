@@ -83,8 +83,15 @@ install_font() {
     rm -rf getnf
 }
 
+run_dotfile_setups() {
+    for dir in */;
+    do
+        $dir/setup.sh
+    done
+}
 
 # Main script execution
+run_dotfile_setups
 install_programs
 install_font
 
