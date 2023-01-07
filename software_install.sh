@@ -26,6 +26,19 @@ get_linux_distro() {
     done
 }
 
+lts() {
+    Repo="${2:-updates}" # Default repo is updates
+    echo $1-$(get_latest_package_version $1 $Repo)
+}
+
+get_latest_package_version() {
+    Package=$1
+    Repo=$2
+    PackageInfo=$(dnf list --showduplicates $Package | grep -e "$Repo")
+    temp_array=($(echo $PackageInfo | tr " " "\n")) # Split by space
+    echo ${temp_array[1]}
+}
+
 get_installation_method() {
     user_distro=$(get_linux_distro)
     command="sudo "
