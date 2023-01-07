@@ -12,7 +12,7 @@ linux_distros=( ubuntu arch fedora )
 
 node_version=latest # lts or latest
 
-zshrc_location="~/.config/zshrc/"
+zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
 
 
 get_linux_distro() {
