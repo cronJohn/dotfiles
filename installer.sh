@@ -20,7 +20,7 @@ listChoices() {
     for element in "${items[@]}";
     do
         if grep -q "✔️" <<< "$element"; then # If currentItem has a ✔️
-            echo $element
+            echo "$element" | sed 's/ ✔️//'
         fi
     done
 }
