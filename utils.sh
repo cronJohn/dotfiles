@@ -47,15 +47,15 @@ get_installation_method() {
 
 
 install_programs(){
-    standard_programs=$1
-    flatpak_programs=$2
-    installation_method=$(get_installation_method)
+    for i in "$*"; do $(get_installation_method) $i; done;
+}
 
-    # Install all standard programs
-    $installation_method $standard_programs
+install_flatpaks(){
+    for i in "$*"; do flatpak install flathub $i; done;
+}
 
-    # Install all flatpaks
-    flatpak install flathub $flatpak_programs
+install_snap(){
+    for i in "$*"; do sudo snap install $i; done;
 }
 
 

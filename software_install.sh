@@ -11,9 +11,14 @@ flatpak_programs="net.ankiweb.Anki com.obsproject.Studio"
 
 node_version=latest # lts or latest
 
+install_all(){
+    install_programs $standard_programs
+    install_flatpaks $flatpak_programs
+}
+
 
 # Main script execution
-install_programs $standard_programs $flatpak_programs
+install_all
 install_font
 run_dotfile_setups
 
