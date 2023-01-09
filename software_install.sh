@@ -11,13 +11,13 @@ flatpak_programs=( net.ankiweb.Anki com.obsproject.Studio )
 
 node_version=latest # lts or latest
 
-zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
-
 
 # Main script execution
 install_programs standard_programs flatpak_programs
 install_font
 run_dotfile_setups
+
+zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
 
 # A universal way of installing rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
