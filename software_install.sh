@@ -9,16 +9,13 @@ standard_programs=( $(lts neovim) zsh python3-neovim kate steam discord inkscape
 
 flatpak_programs=( net.ankiweb.Anki com.obsproject.Studio )
 
-linux_distros=( ubuntu arch fedora nobara )
-
 node_version=latest # lts or latest
 
 zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
 
-installation_method=$(get_installation_method)
 
 # Main script execution
-install_programs
+install_programs standard_programs flatpak_programs
 install_font
 run_dotfile_setups
 

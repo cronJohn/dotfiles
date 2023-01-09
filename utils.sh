@@ -1,5 +1,7 @@
 #/bin/bash
 
+linux_distros=( ubuntu arch fedora nobara )
+
 get_linux_distro() {
     location="/etc/os-release"
     for distro in "${linux_distros[@]}"
@@ -45,6 +47,10 @@ get_installation_method() {
 
 
 install_programs(){
+    standard_programs=$1
+    flatpak_programs=$2
+    installation_method=$(get_installation_method)
+
     # Install all standard programs
     for i in "${standard_programs[@]}"
     do
