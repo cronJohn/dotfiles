@@ -3,7 +3,7 @@
 # Exit if any error happens
 set -e
 
-standard_programs=( $(lts neovim) python3-neovim kate steam discord inkscape qalculate-qt ripgrep fzf)
+standard_programs=( $(lts neovim) zsh python3-neovim kate steam discord inkscape qalculate-qt ripgrep fzf)
 
 flatpak_programs=( net.ankiweb.Anki com.obsproject.Studio )
 
