@@ -18,9 +18,9 @@ zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
 installation_method=$(get_installation_method)
 
 # Main script execution
-run_dotfile_setups
 install_programs
 install_font
+run_dotfile_setups
 
 # A universal way of installing rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
