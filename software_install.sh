@@ -5,15 +5,15 @@ set -e
 
 source "./utils.sh"
 
-standard_programs=( $(lts neovim) zsh python3-neovim kate steam discord inkscape qalculate-qt ripgrep fzf)
+standard_programs="$(lts neovim) zsh python3-neovim kate steam discord inkscape qalculate-qt ripgrep fzf"
 
-flatpak_programs=( net.ankiweb.Anki com.obsproject.Studio )
+flatpak_programs="net.ankiweb.Anki com.obsproject.Studio"
 
 node_version=latest # lts or latest
 
 
 # Main script execution
-install_programs standard_programs flatpak_programs
+install_programs $standard_programs $flatpak_programs
 install_font
 run_dotfile_setups
 
