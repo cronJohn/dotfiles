@@ -7,7 +7,7 @@ standard_programs=( $(lts neovim) zsh python3-neovim kate steam discord inkscape
 
 flatpak_programs=( net.ankiweb.Anki com.obsproject.Studio )
 
-linux_distros=( ubuntu arch fedora )
+linux_distros=( ubuntu arch fedora nobara )
 
 node_version=latest # lts or latest
 
@@ -42,7 +42,7 @@ get_installation_method() {
     user_distro=$(get_linux_distro)
     command="sudo "
 
-    if [ $user_distro = "fedora" ];
+    if [ $user_distro = "fedora" ] || [ $user_distro = "nobara" ];
     then
         command+="dnf install"
     elif [ $user_distro = "arch" ];
