@@ -52,15 +52,15 @@ install_programs(){
     installation_method=$(get_installation_method)
 
     # Install all standard programs
-    for i in "${standard_programs[@]}"
+    for program in "${standard_programs[@]}"
     do
-        eval "$installation_method $i"
+        $installation_method $program
     done
 
     # Install all flatpaks
-    for i in "${flatpak_programs[@]}"
+    for flatpak in "${flatpak_programs[@]}"
     do
-        flatpak install flathub $i
+        flatpak install flathub $flatpak
     done
 }
 
