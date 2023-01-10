@@ -70,8 +70,11 @@ install_font() {
 
 run_dotfile_setups() {
     # Paths in setup.sh are relative to dotfiles (./ is /dotfiles/)
-    for dir in */;
-    do
-        $dir/setup.sh
-    done
+    if [[ $(find -maxdepth 1 -mindepth 1 -type d | wc -l) -gt 0 ]];
+    then
+        for dir in */;
+        do
+            $dir/setup.sh
+        done
+    fi
 }
