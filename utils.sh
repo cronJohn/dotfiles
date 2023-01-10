@@ -81,5 +81,5 @@ configure_dotfile_dirs(){ # ignores hidden directories
 }
 
 run_scripts_in_dir(){
-        for dir in $(find "$1" -type f -print); do $dir; done
+        for dir in $(find "${1:-.userScripts}" -type f -print); do $dir; done
 }
