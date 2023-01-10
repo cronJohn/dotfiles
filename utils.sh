@@ -73,13 +73,13 @@ install_font() {
     rm -rf getnf
 }
 
-run_dotfile_setups() {
-    # Paths in setup.sh are relative to dotfiles (./ is /dotfiles/)
-    if [[ $(find -maxdepth 1 -mindepth 1 -type d | wc -l) -gt 0 ]];
-    then
-        for dir in */;
-        do
-            $dir/setup.sh
-        done
-    fi
+configure_dotfile_dirs(){ # ignores hidden directories
+        if [[ $(find -maxdepth 1 -mindepth 1 -type d -not -name '.*' | wc -l) -gt 0 ]];
+        then
+            for dir in */; do $dir/${1:-setup.sh}; done
+        fi
+}
+
+run_scripts_in_dir(){
+        for dir in $(find "$1" -type f -print); do $dir; done
 }
