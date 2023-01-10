@@ -2,6 +2,11 @@
 
 linux_distros=( ubuntu arch fedora nobara )
 
+output_status () {
+    echo $1
+    sleep ${2:-1}
+}
+
 get_linux_distro() {
     location="/etc/os-release"
     for distro in "${linux_distros[@]}"
