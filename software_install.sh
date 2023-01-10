@@ -9,8 +9,6 @@ standard_programs="$(lts neovim) zsh python3-neovim kate steam discord inkscape 
 
 flatpak_programs="net.ankiweb.Anki com.obsproject.Studio"
 
-node_version=latest # lts or latest
-
 # Functions for user to use and change
 install_all(){
     install_programs $standard_programs
@@ -28,21 +26,6 @@ run_dotfile_setups() {
 output_status "Installing everything... " && install_all
 output_status "Installing font... " 2 && install_font
 output_status "Setting up dotfiles..." && run_dotfile_setups
-
-zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
-
-# A universal way of installing rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-echo 'source "$HOME/.cargo/env"' >> $zshrc_location
-
-
-# A universal way of installing pnpm
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-echo 'export PNPM_HOME="$HOME/.local/share/pnpm"' >> $zshrc_location
-echo 'export PATH="$PNPM_HOME:$PATH"' >> $zshrc_location
-
-source ~/.bashrc
-pnpm env use --global $node_version
 
 # Enable fs trim
 echo 'Enabling SSD trim...'
