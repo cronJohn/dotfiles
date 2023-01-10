@@ -74,12 +74,12 @@ install_font() {
 }
 
 configure_dotfile_dirs(){ # ignores hidden directories
-        if [[ $(find -maxdepth 1 -mindepth 1 -type d -not -name '.*' | wc -l) -gt 0 ]];
-        then
-            for dir in */; do $dir/${1:-setup.sh}; done
-        fi
+    if [[ $(find -maxdepth 1 -mindepth 1 -type d -not -name '.*' | wc -l) -gt 0 ]];
+    then
+        for dir in */; do $dir/${1:-setup.sh}; done
+    fi
 }
 
 run_scripts_in_dir(){
-        for dir in $(find "${1:-.userScripts}" -type f -print); do $dir; done
+    for dir in $(find "${1:-.userScripts}" -type f -print); do $dir; done
 }
