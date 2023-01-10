@@ -18,9 +18,9 @@ install_all(){
 
 
 # Main script execution
-install_all
-install_font
-run_dotfile_setups
+output_status "Installing everything... " && install_all
+output_status "Installing font... " 2 && install_font
+output_status "Setting up dotfiles..." && run_dotfile_setups
 
 zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
 
