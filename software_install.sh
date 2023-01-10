@@ -11,9 +11,16 @@ flatpak_programs="net.ankiweb.Anki com.obsproject.Studio"
 
 node_version=latest # lts or latest
 
+# Functions for user to use and change
 install_all(){
     install_programs $standard_programs
     install_flatpaks $flatpak_programs
+}
+
+run_dotfile_setups() {
+    # Paths in setup.sh are relative to dotfiles (./ is /dotfiles/)
+    configure_dotfile_dirs
+    run_scripts_in_dir ".userScripts"
 }
 
 
