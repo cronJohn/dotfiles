@@ -8,7 +8,7 @@ br branch
 ci commit
 last 'log -1 HEAD'
 r reset
-rh reset --hard
+rh 'reset --hard'
 ac '!git add -A && git commit -m'
 s status
 d diff
