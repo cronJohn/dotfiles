@@ -34,6 +34,4 @@ return {
   	},
   },
 
-  -- Theme
-  'navarasu/onedark.nvim',
 }
