@@ -8,14 +8,18 @@ output_status () {
 }
 
 get_linux_distro() {
-    location="/etc/os-release"
+    distro_info=$(grep "PRETTY_NAME" /etc/os-release)
+    shopt -s nocasematch # if statement will be case insensitive
+
     for distro in "${linux_distros[@]}"
     do
-        if grep -q $distro $location # finds something
+        if [[ $distro_info =~ "$distro" ]];
         then
             echo "$distro"
         fi
     done
+
+    shopt -u nocasematch
 }
 
 lts() {
