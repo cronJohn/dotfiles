@@ -10,11 +10,14 @@ local map = require("utils").map
 --   term_mode = "t",
 --   command_mode = "c"
 
-map("n", "<leader>te", ":Ex<CR>")
-map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>q", ":q<CR>")
-map("n", "<leader>s", ":so<CR>")
-map("n", "<leader>r", ":noh<CR>")
+map("n", "<leader>te", ":Ex<CR>") -- Opens netrw
+map("n", "<leader>s", ":so<CR>")  -- Sources your config
+map("n", "<leader>r", ":noh<CR>") -- Removes highlights
+
+map("n", "<leader>wn", ":w<CR>")  -- Write normally
+map("n", "<leader>we", ":wq<CR>") -- Write and exit
+map("n", "<leader>q", ":q<CR>")   -- Quit
+
 
 -- Resize with arrows
 map("n", "<C-Up>", ":resize +2<CR>", opts)
