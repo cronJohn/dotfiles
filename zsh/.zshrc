@@ -1,5 +1,5 @@
 # zsh profile
-source $XDG_CONFIG_HOME/zsh/.zprofile
+source $ZDOTDIR/.zprofile
 
 # Preferences
 bindkey -v # Vim bindings in the terminal
@@ -24,7 +24,7 @@ autoload -Uz colors && colors
 PROMPT=' ' # This will be the default if something doesn't load right
 
 ## Aliases
-[ -f $XDG_CONFIG_HOME/zsh/.aliases ] && source $XDG_CONFIG_HOME/zsh/.aliases
+[ -f $ZDOTDIR/.aliases ] && source $ZDOTDIR/.aliases
 
 ## Default apps
 export EDITOR='nvim'
@@ -81,7 +81,7 @@ bindkey '^Z' ctrlz
 
 
 # Plugins
-source "$ZDOTDIR/zsh-mod-manager"
+source $ZDOTDIR/zsh-mod-manager
 
 export PLUGINS=() # Export PLUGINS to make sure zsh-mod-manager can access it
 export RESPONSE # Used to tell user to restart shell
