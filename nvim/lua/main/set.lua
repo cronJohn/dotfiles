@@ -34,7 +34,6 @@ local options = {
     signcolumn = "no",
 
     updatetime = 50,
-    numberwidth = 1                          -- set number column width
 }
 
 for k, v in pairs(options) do
