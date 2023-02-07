@@ -25,40 +25,46 @@ map("n", "<C-Down>", ":resize -2<CR>", opts)
 map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
+-- When highlighting text, move the selection with J or K
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
 map("n", "J", "mzJ`z") -- When joining lines, keep the cursor where it is
+
+-- Keep the cursor center when jumping half a page
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+
+-- Keep search terms center
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
--- Insert --
--- Easily exit insert mode without ESC
-map("i", "ys", "<ESC>")
 
 -- Visual --
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
+-- When pasting over a highlight, keep your previous paste buffer
 map("x", "<leader>p", "\"_dP")
 
--- next greatest remap ever : asbjornHaland
+-- Yank into system clipboard : by asbjornHaland
 map("n", "<leader>y", "\"+y")
 map("v", "<leader>y", "\"+y")
 map("n", "<leader>Y", "\"+Y")
 
--- delete to void register
+-- Delete to void register
 map("n", "<leader>d", "\"_d")
 map("v", "<leader>d", "\"_d")
 
--- quick fix list
+-- Quick fix list
 map("n", "<C-k>", "<cmd>cnext<CR>zz")
 map("n", "<C-j>", "<cmd>cprev<CR>zz")
 map("n", "<leader>k", "<cmd>lnext<CR>zz")
 map("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+-- Replace the word that you are on globally
 map("n", "<leader>;", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+-- Add execute privileges to the current file
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
