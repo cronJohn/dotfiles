@@ -1,7 +1,13 @@
 #!/bin/bash
 
-zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
+install_cmd="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 
-# A universal way of installing rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-echo 'source "$HOME/.cargo/env"' >> $zshrc_location
+./teep.sh https://www.rust-lang.org/learn/get-started "$install_cmd" > /dev/null
+
+if [ $? -eq 0 ]; then
+    zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
+    eval $install_cmd
+    echo 'source "$HOME/.cargo/env"' >> $zshrc_location
+else
+    echo "The command for installing Rust has probably changed"
+fi

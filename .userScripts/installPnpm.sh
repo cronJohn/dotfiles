@@ -1,12 +1,18 @@
 #!/bin/bash
 
-zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
 node_version=latest # lts or latest
+install_cmd='curl -fsSL https://get.pnpm.io/install.sh | sh -'
 
-# A universal way of installing pnpm
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-echo 'export PNPM_HOME=~/.local/share/pnpm' >> $zshrc_location
-echo 'export PATH="$PNPM_HOME:$PATH"' >> $zshrc_location
+./teep.sh https://pnpm.io/installation "$install_cmd" > /dev/null
 
-source ~/.bashrc
-pnpm env use --global $node_version
+if [ $? -eq 0 ]; then
+    zshrc_location=$(find $HOME -name ".zshrc" -not -path '*/*dotfiles/*')
+    eval $install_cmd
+    echo 'export PNPM_HOME=~/.local/share/pnpm' >> $zshrc_location
+    echo 'export PATH="$PNPM_HOME:$PATH"' >> $zshrc_location
+
+    source ~/.bashrc
+    pnpm env use --global $node_version
+else
+    echo "The command for installing pnpm has probably changed"
+fi
