@@ -2,6 +2,8 @@
 
 source "./utils.sh"
 
+export zshrc_location="$HOME/.config/zsh/.zshrc"
+
 standard_programs="$(lts neovim) zsh python3-neovim kate steam discord inkscape qalculate-qt ripgrep fzf g++"
 
 flatpak_programs="net.ankiweb.Anki com.obsproject.Studio"
