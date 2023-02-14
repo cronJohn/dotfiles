@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Exit if any error happens
-set -e
-
 source "./utils.sh"
 
 standard_programs="$(lts neovim) zsh python3-neovim kate steam discord inkscape qalculate-qt ripgrep fzf g++"
