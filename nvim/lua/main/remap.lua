@@ -10,7 +10,6 @@ local map = require("utils").map
 --   term_mode = "t",
 --   command_mode = "c"
 
-map("n", "<leader>te", ":Ex<CR>") -- Opens netrw
 map("n", "<leader>s", ":so<CR>")  -- Sources your config
 map("n", "<leader>r", ":noh<CR>") -- Removes highlights
 
