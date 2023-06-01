@@ -1,6 +1,3 @@
-# zsh profile
-source $ZDOTDIR/.zprofile
-
 # Preferences
 bindkey -v # Vim bindings in the terminal
 export KEYTIMEOUT=1 # Make inputting more responsive
