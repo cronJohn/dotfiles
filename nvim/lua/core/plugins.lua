@@ -60,6 +60,10 @@ local plugins = {
     "rcarriga/nvim-dap-ui",
     { "folke/neodev.nvim", opts = {} }, -- Type checking, etc. for dap ui
 
+
+    -- Formatting
+     "jose-elias-alvarez/null-ls.nvim",
+
     -- Productivity
         {"nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
@@ -85,6 +89,27 @@ local plugins = {
     -- Languages
         -- Rust
         "simrat39/rust-tools.nvim",
+
+        -- Go
+        {
+        "Leoluz/nvim-dap-go",
+        ft = "go",
+        dependencies = "mfussenegger/nvim-dap",
+        config = function(_, opts)
+            require("dap-go").setup(opts)
+        end
+        },
+
+        {
+        "olexsmir/gopher.nvim",
+        ft = "go",
+        config = function(_, opts)
+          require("gopher").setup(opts)
+        end,
+        build = function()
+          vim.cmd [[silent! GoInstallDeps]]
+        end,
+      },
 
 }
 

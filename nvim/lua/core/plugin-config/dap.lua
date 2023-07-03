@@ -15,3 +15,8 @@ end
 vim.keymap.set("n", "<Leader>dn", ':DapToggleBreakpoint<CR>')
 vim.keymap.set("n", "<Leader>de", ':DapTerminate<CR>')
 vim.keymap.set("n", "<Leader>do", ':DapStepOver<CR>')
+
+-- Go
+vim.keymap.set("n", "<Leader>dgn", ":lua require('dap-go').debug_test()<CR>") -- debug closest test above cursor
+vim.keymap.set("n", "<Leader>dgl", ":lua require('dap-go').debug_last_test()<CR>") -- debug last run test
+

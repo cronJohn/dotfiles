@@ -13,6 +13,7 @@ require("mason-lspconfig").setup({
     "rust_analyzer",
     "lua_ls",
     "tsserver",
+    "gopls",
   }
 })
 
@@ -23,6 +24,7 @@ require("neodev").setup({
 local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local get_servers = require('mason-lspconfig').get_installed_servers
+local util = require("lspconfig/util")
 
 -- Apply lsp_capabilities to all LSP servers
 for _, server_name in ipairs(get_servers()) do
@@ -52,4 +54,20 @@ require("lspconfig").lua_ls.setup {
             },
         },
     }
+}
+
+-- Go
+lspconfig.gopls.setup {
+  cmd = {"gopls"},
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
 }
