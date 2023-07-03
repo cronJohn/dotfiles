@@ -18,10 +18,9 @@ local plugins = {
         'navarasu/onedark.nvim',
 
         -- Greeter
-        {
-            'goolord/alpha-nvim',
-            event = "VimEnter",
-            dependencies = { 'nvim-tree/nvim-web-devicons' },
+        {'goolord/alpha-nvim',
+         event = "VimEnter",
+         dependencies = { 'nvim-tree/nvim-web-devicons' },
         },
 
         -- Icons
@@ -30,6 +29,8 @@ local plugins = {
         -- Statusline
         'nvim-lualine/lualine.nvim',
 
+
+    -- Tree-sitter
     {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
     'nvim-treesitter/nvim-treesitter-context',
 
@@ -60,7 +61,6 @@ local plugins = {
     "rcarriga/nvim-dap-ui",
     { "folke/neodev.nvim", opts = {} }, -- Type checking, etc. for dap ui
 
-
     -- Formatting
      "jose-elias-alvarez/null-ls.nvim",
 
@@ -85,6 +85,7 @@ local plugins = {
         opts = {}},
 
         "mbbill/undotree",
+
 
     -- Languages
         -- Rust

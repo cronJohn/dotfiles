@@ -36,7 +36,7 @@ end
 -- Configure each LSP server
 
 -- Lua
-require("lspconfig").lua_ls.setup {
+lspconfig.lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {
