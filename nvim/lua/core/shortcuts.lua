@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 local map = require("utils").map
 
 -- Modes
@@ -67,3 +65,4 @@ map("n", "<leader>;", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- Add execute privileges to the current file
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+

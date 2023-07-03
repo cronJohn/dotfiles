@@ -42,4 +42,4 @@ end
 
 vim.opt.isfname:append("@-@")
 vim.opt.iskeyword:append("-")                -- will treat this-thing as one word
-vim.g.mapleader = " "
+
