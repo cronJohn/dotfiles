@@ -87,6 +87,13 @@ zsh_set_theme "romkatv/powerlevel10k" "powerlevel10k.zsh-theme" 1
 zsh_add_plugin "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
+zsh_add_plugin "jocelynmallon/zshmarks" "zshmarks.plugin.zsh"
+alias n="jump"
+alias e="bookmark"
+alias i="deletemark"
+alias o="showmarks"
+
+
 zsh_add_plugin "none9632/zsh-sudo" "zsh-sudo.zsh"
 bindkey -M vicmd '^Y' sudo-command-line # Ctrl+y prefixes cmd with sudo
 bindkey -M viins '^Y' sudo-command-line
