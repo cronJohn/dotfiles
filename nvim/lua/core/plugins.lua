@@ -68,8 +68,10 @@ local plugins = {
         {"nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-        
+
         "numToStr/Comment.nvim", -- Comment stuff out
+
+        "ahmedkhalf/project.nvim", -- Project management
 
         {"ggandor/leap.nvim",    -- Jump to any line in a file
         dependencies = { "tpope/vim-repeat" }},

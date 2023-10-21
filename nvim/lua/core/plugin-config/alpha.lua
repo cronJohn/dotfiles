@@ -18,10 +18,11 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.buttons.val = {
-    dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "f", "  > Find file", ":Telescope find_files<CR>"),
-    dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
-    dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
+    dashboard.button( "a", "🆕 > New file" , ":ene <BAR> startinsert <CR>"),
+    dashboard.button( "r", "🔍 > Find file", ":Telescope find_files<CR>"),
+    dashboard.button( "s", "🕒 > Recent"   , ":Telescope oldfiles<CR>"),
+    dashboard.button( "o", "📁 > Projects"   , ":Telescope projects<CR>"),
+    dashboard.button( "t", "🚪 > Quit NVIM", ":qa<CR>"),
 }
 
 dashboard.section.footer.val = "Welcome!"
