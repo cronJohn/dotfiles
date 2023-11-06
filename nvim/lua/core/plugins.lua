@@ -15,7 +15,12 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     -- Appearance
         -- Theme
-        'navarasu/onedark.nvim',
+        {
+          "folke/tokyonight.nvim",
+          lazy = false,
+          priority = 1000,
+          opts = {},
+        },
 
         -- Greeter
         {'goolord/alpha-nvim',
