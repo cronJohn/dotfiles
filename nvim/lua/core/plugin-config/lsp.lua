@@ -26,6 +26,13 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.pr
 local get_servers = require('mason-lspconfig').get_installed_servers
 local util = require("lspconfig/util")
 
+-- Change gutter icons
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- Apply lsp_capabilities to all LSP servers
 for _, server_name in ipairs(get_servers()) do
   lspconfig[server_name].setup({
@@ -34,7 +41,6 @@ for _, server_name in ipairs(get_servers()) do
 end
 
 -- Configure each LSP server
-
 -- Lua
 lspconfig.lua_ls.setup {
     settings = {

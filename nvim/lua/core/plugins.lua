@@ -86,7 +86,10 @@ local plugins = {
         opts = {}},
 
         "theprimeagen/harpoon",
-        "tpope/vim-fugitive",    -- Git
+
+        -- Git
+        "tpope/vim-fugitive",
+        "lewis6991/gitsigns.nvim",
 
         {"folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },

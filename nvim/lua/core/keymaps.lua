@@ -31,7 +31,7 @@ local options = {
     showtabline = 1,                         -- only show tabline if there are 2 or more tabs
     showcmd = true,                          -- Put last action in bottom right
 
-    signcolumn = "no",
+    signcolumn = "yes",
 
     updatetime = 50,
 }
