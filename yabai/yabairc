@@ -1,0 +1,34 @@
+# Configure scripting addition
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Layout
+yabai -m config layout bsp
+
+# Spacing
+yabai -m config top_padding    0
+yabai -m config bottom_padding 0
+yabai -m config left_padding   0
+yabai -m config right_padding  0
+yabai -m config window_gap     5
+
+yabai -m config auto_balance off
+
+
+# Mouse
+## set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier alt
+
+## set modifier + left-click drag to move window (default: move)
+yabai -m config mouse_action1 move
+
+## set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+
+yabai -m config mouse_follows_focus off
+
+
+# Rules
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Dictionary$" manage=off
