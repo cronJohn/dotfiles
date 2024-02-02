@@ -26,9 +26,9 @@ require("telescope").load_extension("fzf")
 require('telescope').load_extension("projects")
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>nt', builtin.find_files, {})
-vim.keymap.set('n', '<leader>ng', builtin.git_files, {})
-vim.keymap.set('n', '<leader>nr', ":Telescope projects<CR>", {})
-vim.keymap.set('n', '<leader>ns', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") });
-end)
+local map = require("keytex.keybindings").create_keybinding
+
+map('n', '<leader>ne', builtin.find_files,        {desc = "Telescope find files"})
+map('n', '<leader>nr', builtin.git_files,         {desc = "Telescope git files"})
+map('n', '<leader>ni', ":Telescope projects<CR>", {desc = "Telescope search projects"})
+map('n', '<leader>no', function() builtin.grep_string({ search = vim.fn.input("Grep > ") }); end, {desc = "Telescope grep"})

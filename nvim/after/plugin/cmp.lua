@@ -1,13 +1,13 @@
 local cmp = require("cmp")
+local map = require("keytex.keybindings").create_keybinding
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
   mapping = cmp.mapping.preset.insert({
-      ['<C-s>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-t>'] = cmp.mapping.scroll_docs(4),
-      ['<C-o>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
+      ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-d>'] = cmp.mapping.scroll_docs(4),
+      ['<C-q>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
   snippet = {
@@ -22,6 +22,13 @@ cmp.setup({
     { name = 'buffer' },
   }),
 })
+
+-- Make keybindings known to keytex
+map("i", "<C-u>", cmp.mapping.scroll_docs, {desc = "Scroll up in docs"}, {mark = true})
+map("i", "<C-d>", cmp.mapping.scroll_docs, {desc = "Scroll down in docs"}, {mark = true})
+map("i", "<C-q>", cmp.mapping.abort, {desc = "Abort completion"}, {mark = true})
+map("i", "<CR>", cmp.mapping.confirm, {desc = "Confirm completion"}, {mark = true})
+
 
  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
  cmp.setup.cmdline({ '/', '?' }, {

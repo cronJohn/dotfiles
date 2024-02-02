@@ -2,6 +2,8 @@ local packages_to_install = {
     "codelldb",
 }
 
+require("mason").setup()
+
 local function install_package(package)
     vim.cmd("MasonInstall " .. package)
 end

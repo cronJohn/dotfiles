@@ -39,7 +39,3 @@ local options = {
 for k, v in pairs(options) do
    vim.opt[k] = v
 end
-
-vim.opt.isfname:append("@-@")
-vim.opt.iskeyword:append("-")                -- will treat this-thing as one word
-

@@ -1,18 +1,4 @@
--- Check if lazy is installed
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-local plugins = {
+require('lazy').setup({
     -- Appearance
         -- Theme
         {
@@ -74,7 +60,11 @@ local plugins = {
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
-        "numToStr/Comment.nvim", -- Comment stuff out
+        -- Comment stuff out
+        {
+            "numToStr/Comment.nvim",
+            lazy = false,
+        },
 
         "ahmedkhalf/project.nvim", -- Project management
 
@@ -123,8 +113,34 @@ local plugins = {
         end,
       },
 
-}
+    -- Personal
+    "cronJohn/keytex.nvim",
+    {
+        dir = "~/Code/Dev/Lua/nvim-dev/keytex.nvim"
+    },
+},
 
-local opts = {}
+-- Options
+{
+    dev = {
+        -- directory where you store your local plugin projects
+        path = "~/Code/Dev/Lua/nvim-dev",
+        fallback = false,
+    },
 
-require("lazy").setup(plugins, opts)
+    ui = {
+        icons = {
+            cmd = "⌘",
+            config = "🛠",
+            event = "📅",
+            ft = "📂",
+            init = "⚙",
+            keys = "🗝",
+            plugin = "🔌",
+            runtime = "💻",
+            source = "📄",
+            start = "🚀",
+            task = "📌",
+        },
+    },
+})
