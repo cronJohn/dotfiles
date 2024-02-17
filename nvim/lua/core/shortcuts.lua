@@ -48,8 +48,8 @@ map("n", "<leader>d", "\"_d", {desc = "Start a deletion into void register"})
 map("v", "<leader>d", "\"_d", {desc = "Delete selection into void register"})
 
 -- Quick fix list
-map("n", "<C-k>", "<cmd>cnext<CR>zz", {desc = "Go to the next quick fix entry"})
-map("n", "<C-j>", "<cmd>cprev<CR>zz", {desc = "Go to the previous quick fix entry"})
+map("n", "<C-j>", "<cmd>cnext<CR>zz", {desc = "Go to the next quick fix entry"})
+map("n", "<C-p>", "<cmd>cprev<CR>zz", {desc = "Go to the previous quick fix entry"})
 map("n", "<leader>k", "<cmd>lnext<CR>zz", {desc = "Go to the next location list entry"})
 map("n", "<leader>j", "<cmd>lprev<CR>zz", {desc = "Go to the previous location list entry"})
 
