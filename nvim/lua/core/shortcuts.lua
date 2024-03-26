@@ -11,15 +11,15 @@ local map = require("keytex.keybindings").create_keybinding
 map("n", "<leader>in", ":so<CR>", {desc = "Sources your config"})
 map("n", "<leader>ir", ":noh<CR>", {desc = "Removes highlights"})
 
-map("n", "<leader>is", ":w<CR>")
-map("n", "<leader>it", ":q<CR>")
+map("n", "<leader>is", ":w<CR>", {desc = "Save file"})
+map("n", "<leader>it", ":q<CR>", {desc = "Close file"})
 
 
 -- Resize with arrows
-map("n", "<C-Up>", ":resize +2<CR>")
-map("n", "<C-Down>", ":resize -2<CR>")
-map("n", "<C-Left>", ":vertical resize -2<CR>")
-map("n", "<C-Right>", ":vertical resize +2<CR>")
+map("n", "<C-Up>", ":resize +2<CR>", {desc = "Resize window up"})
+map("n", "<C-Down>", ":resize -2<CR>", {desc = "Resize window down"})
+map("n", "<C-Left>", ":vertical resize -2<CR>", {desc = "Resize window left"})
+map("n", "<C-Right>", ":vertical resize +2<CR>", {desc = "Resize window right"})
 
 map("v", "J", ":m '>+1<CR>gv=gv", {desc = "When highlighting text, move the selection with J"})
 map("v", "K", ":m '<-2<CR>gv=gv", {desc = "When highlighting text, move the selection with K"})
@@ -34,8 +34,8 @@ map("n", "N", "Nzzzv", {desc = "Keep search terms center when searching backward
 
 
 -- Visual --
-map("v", "<", "<gv", {desc = "Stay in indent mode when unindenting"})
-map("v", ">", ">gv", {desc = "Stay in indent mode when indenting"})
+map("v", "<", "<gv", {desc = "Stay in visual mode when unindenting"})
+map("v", ">", ">gv", {desc = "Stay in visual mode when indenting"})
 
 map("x", "<leader>ip", "\"_dP", {desc = "When pasting over a highlight, keep your previous paste buffer"})
 

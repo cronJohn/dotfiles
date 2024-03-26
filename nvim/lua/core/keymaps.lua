@@ -8,7 +8,7 @@ local options = {
     shiftwidth = 4,
     expandtab = true,
 
-    smartindent = true,
+    breakindent = true,
 
     wrap = false,
 
@@ -18,22 +18,33 @@ local options = {
     undodir = os.getenv("HOME") .. "/.vim/undodir",
     undofile = true,
 
-    hlsearch = false,
+    hlsearch = true,
     incsearch = true,
 
     termguicolors = true,
-    showmode = true,                         -- shows you what mode you are in
+    showmode = false,
     cmdheight = 1,                           -- more space in the neovim command line for displaying messages
-    conceallevel = 0,                        -- so that `` is visible in markdown files
+
     ignorecase = true,                       -- ignore case in search patterns
+    smartcase = true,                        -- if it contains uppercase, then respect case
+
     mouse = "a",                             -- allow the mouse to be used in neovim
     pumheight = 10,                          -- pop up menu height
-    showtabline = 1,                         -- only show tabline if there are 2 or more tabs
-    showcmd = true,                          -- Put last action in bottom right
 
     signcolumn = "yes",
 
-    updatetime = 50,
+    scrolloff = 8,                           -- How many lines to keep above and below the cursor
+
+    -- Decrease update time
+    updatetime = 250,
+    timeoutlen = 300,
+
+    -- Show spaces and other whitespace characters
+    list = true,
+    listchars = { tab = '» ', trail = '·', nbsp = '␣' },
+
+    inccommand = 'split',                   -- Preview substitutions live
+
 }
 
 for k, v in pairs(options) do

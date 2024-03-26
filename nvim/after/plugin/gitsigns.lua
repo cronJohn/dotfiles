@@ -24,13 +24,13 @@ require('gitsigns').setup{
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gs.next_hunk() end)
             return '<Ignore>'
-        end, {expr=true})
+        end, {expr=true, desc="Navigate to next hunk"})
 
         map('n', '[c', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
-        end, {expr=true})
+        end, {expr=true, desc="Navigate to previous hunk"})
 
         -- Actions
         map('n', '<leader>rs', gs.stage_hunk, {desc = "Git stage hunk"})

@@ -53,18 +53,27 @@ require('lazy').setup({
     { "folke/neodev.nvim", opts = {} }, -- Type checking, etc. for dap ui
 
     -- Formatting
-     "jose-elias-alvarez/null-ls.nvim",
+     "nvimtools/none-ls.nvim",
 
     -- Productivity
-        {"nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        {'nvim-telescope/telescope.nvim',
+          event = 'VeryLazy',
+          branch = '0.1.x',
+          dependencies = {
+              'nvim-lua/plenary.nvim',
+              {'nvim-telescope/telescope-fzf-native.nvim',
+                build = 'make',
+                cond = function()
+                    return vim.fn.executable 'make' == 1
+                end,
+              },
+         },
+        }, "nvim-telescope/telescope-file-browser.nvim",
+           "nvim-telescope/telescope-ui-select.nvim",
 
-        -- Comment stuff out
-        {
-            "numToStr/Comment.nvim",
-            lazy = false,
-        },
+        "numToStr/Comment.nvim", -- Comment stuff out
+
+        { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
         "ahmedkhalf/project.nvim", -- Project management
 

@@ -7,5 +7,5 @@ map("n", "<leader>ns", ":Telescope harpoon marks<CR>", {desc = "Harpoon view mar
 
 map("n", "<C-n>", function() ui.nav_file(1) end, {desc = "Harpoon nav to file 1"})
 map("n", "<C-e>", function() ui.nav_file(2) end, {desc = "Harpoon nav to file 2"})
-map("n", "<C-i>", function() ui.nav_file(3) end, {desc = "Harpoon nav to file 3"})
-map("n", "<C-o>", function() ui.nav_file(4) end, {desc = "Harpoon nav to file 4"})
+map("n", "<C-t>", function() ui.nav_file(3) end, {desc = "Harpoon nav to file 3"})
+map("n", "<C-s>", function() ui.nav_file(4) end, {desc = "Harpoon nav to file 4"})
