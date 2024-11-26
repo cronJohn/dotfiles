@@ -31,7 +31,7 @@ local options = {
     mouse = "a",                             -- allow the mouse to be used in neovim
     pumheight = 10,                          -- pop up menu height
 
-    signcolumn = "yes",
+    signcolumn = "yes:3",
 
     scrolloff = 8,                           -- How many lines to keep above and below the cursor
 

@@ -1,3 +1,3 @@
 local map = require("keytex.keybindings").create_keybinding
 
-map("n", "<leader>l", "<cmd>TroubleToggle<cr>", {desc = "Toggle trouble"})
+map("n", "<leader>l", "<cmd>Trouble diagnostics toggle<cr>", {desc = "Toggle trouble"})

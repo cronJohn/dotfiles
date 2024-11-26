@@ -39,7 +39,12 @@ require('lazy').setup({
     "onsails/lspkind.nvim", -- Icons
 
         -- AI
-        "github/copilot.vim",
+        {
+            "supermaven-inc/supermaven-nvim",
+            config = function()
+                require("supermaven-nvim").setup({})
+            end,
+        },
 
 
     -- Snippets
@@ -48,8 +53,7 @@ require('lazy').setup({
     "rafamadriz/friendly-snippets",
 
     -- DAP
-    "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
     { "folke/neodev.nvim", opts = {} }, -- Type checking, etc. for dap ui
 
     -- Formatting
@@ -124,19 +128,10 @@ require('lazy').setup({
 
     -- Personal
     "cronJohn/keytex.nvim",
-    {
-        dir = "~/Code/Dev/Lua/nvim-dev/keytex.nvim"
-    },
 },
 
 -- Options
 {
-    dev = {
-        -- directory where you store your local plugin projects
-        path = "~/Code/Dev/Lua/nvim-dev",
-        fallback = false,
-    },
-
     ui = {
         icons = {
             cmd = "⌘",

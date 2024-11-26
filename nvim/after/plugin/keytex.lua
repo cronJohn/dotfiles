@@ -1,4 +1,6 @@
-require('keytex.keybindings').setup()
+require('keytex').setup({
+    save_file = "~/.config/nvim-persist"
+})
 
 local map = require("keytex.keybindings").create_keybinding
 

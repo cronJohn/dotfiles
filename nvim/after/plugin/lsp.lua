@@ -30,9 +30,8 @@ require("mason").setup()
 
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "rust_analyzer",
-    "lua_ls",
-    "tsserver",
+    "lua-language-server",
+    "typescript-language-server",
     "gopls",
   }
 })
@@ -88,12 +87,23 @@ lspconfig.gopls.setup {
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
-    gopls = {
-      completeUnimported = true,
-      usePlaceholders = true,
-      analyses = {
-        unusedparams = true,
+      gopls = {
+          buildFlags = { "-tags=dev,prod" },
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+              unusedparams = true,
+          },
       },
-    },
   },
+}
+
+-- Zig
+lspconfig.zls.setup{
+cmd = { '/opt/homebrew/bin/zls' },
+  settings = {
+    zls = {
+      zig_exe_path = '/opt/homebrew/bin/zig',
+    }
+  }
 }

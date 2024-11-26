@@ -2,11 +2,16 @@ require("telescope").setup {
     pickers = {
         find_files = {
             theme = "dropdown",
+            no_ignore = true,
+            hidden = true,
+            file_ignore_patterns = { "node_modules", ".git" }
         }
     },
     extensions = {
         file_browser = {
             theme = "dropdown",
+            hidden = true,
+            no_ignore = true,
             -- disables netrw and use telescope-file-browser in its place
             hijack_netrw = true,
         },
