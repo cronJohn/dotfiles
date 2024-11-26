@@ -28,14 +28,6 @@ map("n", "<leader>to", function() vim.diagnostic.open_float() end,              
 
 require("mason").setup()
 
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "lua-language-server",
-    "typescript-language-server",
-    "gopls",
-  }
-})
-
 require("neodev").setup({
   library = { plugins = { "nvim-dap-ui" }, types = true },
 })

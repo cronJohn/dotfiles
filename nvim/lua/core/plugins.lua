@@ -28,6 +28,7 @@ require('lazy').setup({
     -- LSP
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim", -- for autoinstall
     "neovim/nvim-lspconfig",
 
     -- CMP
