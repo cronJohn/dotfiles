@@ -12,3 +12,6 @@ require("core.plugins")
 require("core.globals")
 require("core.shortcuts")
 require("core.autoinstall")
+
+-- Load language specific configs
+require("languages.rust")
