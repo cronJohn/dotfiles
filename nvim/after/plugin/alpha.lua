@@ -21,7 +21,6 @@ dashboard.section.buttons.val = {
     dashboard.button( "a", "🆕 > New file" , ":ene <BAR> startinsert <CR>"),
     dashboard.button( "r", "🔍 > Find file", ":Telescope find_files<CR>"),
     dashboard.button( "s", "🕒 > Recent"   , ":Telescope oldfiles<CR>"),
-    dashboard.button( "o", "📁 > Projects"   , ":Telescope projects<CR>"),
     dashboard.button( "t", "🚪 > Quit NVIM", ":qa<CR>"),
 }
 
