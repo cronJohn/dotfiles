@@ -1,0 +1,88 @@
+# Needed for it to work
+start-at-login = true
+after-login-command = []
+after-startup-command = []
+
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 30
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+automatically-unhide-macos-hidden-apps = false
+
+[key-mapping]
+preset = 'qwerty' # Even though I use colemak
+
+[gaps]
+inner.horizontal = 0
+inner.vertical =   0
+outer.left =       0
+outer.bottom =     0
+outer.top =        0
+outer.right =      0
+
+[mode.main.binding]
+alt-a = 'layout tiles horizontal vertical'
+alt-r = 'layout accordion horizontal vertical'
+
+# Focus
+alt-n = 'focus left'
+alt-e = 'focus right'
+alt-t = 'focus up'
+alt-s = 'focus down'
+
+# Move
+alt-shift-n = 'move left'
+alt-shift-e = 'move right'
+alt-shift-t = 'move up'
+alt-shift-s = 'move down'
+
+# Resize
+alt-i = 'resize smart -50'
+alt-o = 'resize smart +50'
+
+# Change workspace
+alt-shift-ctrl-cmd-n = 'workspace ⭐'
+alt-shift-ctrl-cmd-e = 'workspace 🎧'
+alt-shift-ctrl-cmd-t = 'workspace 💻'
+alt-shift-ctrl-cmd-s = 'workspace 🌌'
+
+# Move to workspace
+alt-shift-ctrl-n = 'move-node-to-workspace ⭐'
+alt-shift-ctrl-e = 'move-node-to-workspace 🎧'
+alt-shift-ctrl-t = 'move-node-to-workspace 💻'
+alt-shift-ctrl-s = 'move-node-to-workspace 🌌'
+
+alt-cmd-shift-ctrl-1 = 'workspace-back-and-forth'
+alt-l = 'move-workspace-to-monitor --wrap-around next'
+
+# Join windows
+alt-cmd-n = ['join-with left', 'mode main']
+alt-cmd-e = ['join-with right', 'mode main']
+alt-cmd-t = ['join-with up', 'mode main']
+alt-cmd-s = ['join-with down', 'mode main']
+
+# Set mode to service
+alt-u = 'mode service'
+
+[mode.service.binding]
+n = ['reload-config', 'mode main']
+e = ['flatten-workspace-tree', 'mode main'] # reset layout
+i = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+o = ['close-all-windows-but-current', 'mode main']
