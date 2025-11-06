@@ -80,8 +80,6 @@ require('lazy').setup({
 
         { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-        "ahmedkhalf/project.nvim", -- Project management
-
         {"ggandor/leap.nvim",    -- Jump to any line in a file
         dependencies = { "tpope/vim-repeat" }},
 
@@ -104,7 +102,35 @@ require('lazy').setup({
 
     -- Languages
         -- Rust
-        "simrat39/rust-tools.nvim",
+        {
+            'mrcjkb/rustaceanvim',
+            version = '^6',
+            lazy = false,
+            ft = "rust",
+        },
+        {
+            'rust-lang/rust.vim',
+            ft = "rust",
+            init = function ()
+                vim.g.rustfmt_autosave = 1
+            end
+        },
+        {
+            'saecki/crates.nvim',
+            ft = {"toml"},
+            config = function()
+                require("crates").setup {
+                    completion = {
+                        cmp = {
+                            enabled = true
+                        },
+                    },
+                }
+                require('cmp').setup.buffer({
+                    sources = { { name = "crates" }}
+                })
+            end
+        },
 
         -- Go
         {

@@ -27,75 +27,17 @@ map("n", "<leader>tf", function() vim.lsp.buf.format { async = true } end,      
 map("n", "<leader>to", function() vim.diagnostic.open_float() end,                   {desc = "LSP open diagnostic float"})
 
 require("mason").setup()
-
 require("neodev").setup({
   library = { plugins = { "nvim-dap-ui" }, types = true },
 })
 
-local lspconfig = require('lspconfig')
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local get_servers = require('mason-lspconfig').get_installed_servers
-local util = require("lspconfig/util")
+-- Load server configurations
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("gopls")
 
--- Change gutter icons
+-- Change gutter icons for diagnostics
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-
--- Apply lsp_capabilities to all LSP servers
-for _, server_name in ipairs(get_servers()) do
-  lspconfig[server_name].setup({
-    capabilities = lsp_capabilities,
-  })
-end
-
--- Configure each LSP server
--- Lua
-lspconfig.lua_ls.setup {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" }, -- ignore 'unused vim' errors when working with config files
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                    [vim.fn.stdpath "config" .. "/lua"] = true,
-                },
-                checkThirdParty = false, -- prevents "configure your work environment as `LÖVE`"
-            },
-            completion = {
-                callSnippet = "Replace"
-            },
-        },
-    }
-}
-
--- Go
-lspconfig.gopls.setup {
-  cmd = {"gopls"},
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-      gopls = {
-          buildFlags = { "-tags=dev,prod" },
-          completeUnimported = true,
-          usePlaceholders = true,
-          analyses = {
-              unusedparams = true,
-          },
-      },
-  },
-}
-
--- Zig
-lspconfig.zls.setup{
-cmd = { '/opt/homebrew/bin/zls' },
-  settings = {
-    zls = {
-      zig_exe_path = '/opt/homebrew/bin/zig',
-    }
-  }
-}
