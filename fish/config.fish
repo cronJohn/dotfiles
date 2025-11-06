@@ -1,7 +1,20 @@
+# Remove greeting
 set -g fish_greeting
 
+# Use vim key bindings
 set -U fish_key_bindings fish_vi_key_bindings
+
+# GOAT editor
 set -gx EDITOR nvim
+
+# Set up colors
+set fish_color_command 23e002
+set fish_color_error ff0a02
+set fish_color_quote 25e3fc
+set fish_color_comment 7f7f7f
+set fish_color_autosuggestion 9b9b9b
+set fish_color_param f2f2f2
+
 
 # Homebrew
 eval (/opt/homebrew/bin/brew shellenv)
